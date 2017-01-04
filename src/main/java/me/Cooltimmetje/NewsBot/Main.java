@@ -46,7 +46,6 @@ public class Main {
         }
 
         Constants.STARTUP_TIME = System.currentTimeMillis();
-        Constants.setAdmins();
     }
 
     public static NewsBot getInstance(){

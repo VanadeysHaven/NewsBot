@@ -1,6 +1,7 @@
 package me.Cooltimmetje.NewsBot;
 
 import me.Cooltimmetje.NewsBot.Commands.CommandManager;
+import me.Cooltimmetje.NewsBot.Database.MySqlManager;
 import me.Cooltimmetje.NewsBot.Listener.CreateServerListener;
 import me.Cooltimmetje.NewsBot.Utilities.Constants;
 import me.Cooltimmetje.NewsBot.Utilities.Logger;
@@ -11,12 +12,8 @@ import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.DisconnectedEvent;
 import sx.blah.discord.handle.impl.events.MentionEvent;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
-import sx.blah.discord.handle.obj.IRole;
-import sx.blah.discord.handle.obj.IUser;
 import sx.blah.discord.handle.obj.Status;
 import sx.blah.discord.util.DiscordException;
-import sx.blah.discord.util.MissingPermissionsException;
-import sx.blah.discord.util.RateLimitException;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -70,6 +67,8 @@ public class NewsBot {
         if(!listenersReady){
             event.getClient().changeStatus(Status.game("Collecting News"));
             newsBot.getDispatcher().registerListener(new CommandManager());
+            MySqlManager.loadAdmins();
+            MySqlManager.loadFactions();
 
             listenersReady = true;
         }
@@ -120,6 +119,7 @@ public class NewsBot {
         reconnect.set(false);
         try {
             newsBot.logout();
+            MySqlManager.disconnect();
         } catch (DiscordException e) {
             Logger.warn("Couldn't log out.", e);
         }

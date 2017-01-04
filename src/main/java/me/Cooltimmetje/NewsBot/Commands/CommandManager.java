@@ -1,5 +1,6 @@
 package me.Cooltimmetje.NewsBot.Commands;
 
+import me.Cooltimmetje.NewsBot.Commands.AdminCommands.AddFactionCommand;
 import me.Cooltimmetje.NewsBot.Commands.AdminCommands.ChangeAvatar;
 import me.Cooltimmetje.NewsBot.Commands.AdminCommands.ChangeName;
 import sx.blah.discord.api.events.EventSubscriber;
@@ -23,6 +24,10 @@ public class CommandManager {
                     break;
                 case "!changeavatar":
                     ChangeAvatar.run(event.getMessage());
+                    break;
+                case "!addfaction":
+                    AddFactionCommand.run(event.getMessage());
+                    break;
             }
         }
     }
