@@ -3,7 +3,7 @@ package me.Cooltimmetje.NewsBot.Utilities;
 import java.util.ArrayList;
 
 /**
- * <Needs to be documented>
+ * Class with constant data.
  *
  * @author Tim (Cooltimmetje)
  * @version v0.1-ALPHA-DEV

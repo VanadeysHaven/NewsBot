@@ -48,6 +48,11 @@ public class Main {
         Constants.STARTUP_TIME = System.currentTimeMillis();
     }
 
+    /**
+     * Get the news bot instance.
+     *
+     * @return The instance.
+     */
     public static NewsBot getInstance(){
         return newsBot;
     }

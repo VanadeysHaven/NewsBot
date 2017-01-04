@@ -14,7 +14,7 @@ import java.util.EnumSet;
 import java.util.HashMap;
 
 /**
- * <Needs to be documented>
+ * Manages factions.
  *
  * @author Tim (Cooltimmetje)
  * @version v0.1-ALPHA-DEV
@@ -54,6 +54,15 @@ public class FactionManager {
         MessagesUtils.sendSuccess("Faction **" + name + "** has been added! :tada:" , channelSent);
     }
 
+    /**
+     * Load a faction with the given data.
+     *
+     * @param id ID of the faction.
+     * @param name The name of the faction.
+     * @param channelId The channel ID of the factions channel.
+     * @param roleId The role ID of the factions role.
+     * @param messageId The message ID of the factions message.
+     */
     public static void loadFaction(int id, String name, String channelId, String roleId, String messageId){
         Faction faction = new Faction(id, name, channelId, roleId, messageId);
         factions.put(id, faction);

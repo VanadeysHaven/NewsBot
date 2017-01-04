@@ -21,6 +21,12 @@ import java.util.concurrent.TimeUnit;
  */
 public class MessagesUtils {
 
+    /**
+     * Send a message with a check mark in front.
+     *
+     * @param message The message that should be sent.
+     * @param channel The channel where the message should be sent.
+     */
     public static void sendSuccess(String message, IChannel channel) {
         try {
             channel.sendMessage(":white_check_mark: " + message);
@@ -29,6 +35,12 @@ public class MessagesUtils {
         }
     }
 
+    /**
+     * Send a error message.
+     *
+     * @param error The message that should be sent.
+     * @param channel The channel where the message should be sent.
+     */
     public static void sendError(String error, IChannel channel) {
         ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
         final IMessage message;
@@ -48,6 +60,12 @@ public class MessagesUtils {
         }
     }
 
+    /**
+     * Send a success message, gets removed after time.
+     *
+     * @param messageString
+     * @param channel
+     */
     public static void sendSuccessTime(String messageString, IChannel channel) {
         ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
         final IMessage message;
@@ -67,6 +85,13 @@ public class MessagesUtils {
         }
     }
 
+    /**
+     * Send a plain message.
+     *
+     * @param msg The message that should be sent.
+     * @param channel The channel where it should be sent.
+     * @return The message that has been sent.
+     */
     @SuppressWarnings("all") //Just because IntelliJ decided to be a dick.
     public static IMessage sendPlain(String msg, IChannel channel) {
         try {
@@ -78,18 +103,14 @@ public class MessagesUtils {
         return null;
     }
 
-    @SuppressWarnings("all") //Just because IntelliJ decided to be a dick.
-    public static IMessage sendForce(String msg, IChannel channel) {
-        try {
-            IMessage message = channel.sendMessage(msg);
-            return message;
-        } catch (MissingPermissionsException | RateLimitException | DiscordException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
-
+    /**
+     * Send a PM to a user.
+     *
+     * @param user User that we should send a message to.
+     * @param message The message that should be sent.
+     * @return The message that has been sent.
+     */
     public static IMessage sendPM(IUser user, String message) {
         try {
             return Main.getInstance().getNewsBot().getOrCreatePMChannel(user).sendMessage(message);

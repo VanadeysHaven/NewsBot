@@ -2,7 +2,6 @@ package me.Cooltimmetje.NewsBot;
 
 import me.Cooltimmetje.NewsBot.Commands.CommandManager;
 import me.Cooltimmetje.NewsBot.Database.MySqlManager;
-import me.Cooltimmetje.NewsBot.Listener.CreateServerListener;
 import me.Cooltimmetje.NewsBot.Utilities.Constants;
 import me.Cooltimmetje.NewsBot.Utilities.Logger;
 import me.Cooltimmetje.NewsBot.Utilities.MessagesUtils;
@@ -51,7 +50,6 @@ public class NewsBot {
         newsBot = new ClientBuilder().withToken(token).login();
         if(!preListenersReady){
             newsBot.getDispatcher().registerListener(this);
-            newsBot.getDispatcher().registerListener(new CreateServerListener());
 
             preListenersReady = true;
         }
