@@ -63,8 +63,8 @@ public class MessagesUtils {
     /**
      * Send a success message, gets removed after time.
      *
-     * @param messageString
-     * @param channel
+     * @param messageString The message that should be sent.
+     * @param channel The channel where the message should be sent.
      */
     public static void sendSuccessTime(String messageString, IChannel channel) {
         ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);

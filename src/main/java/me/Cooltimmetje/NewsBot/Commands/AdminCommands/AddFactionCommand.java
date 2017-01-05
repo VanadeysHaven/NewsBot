@@ -4,9 +4,6 @@ import me.Cooltimmetje.NewsBot.Utilities.Constants;
 import me.Cooltimmetje.NewsBot.Utilities.FactionManager;
 import me.Cooltimmetje.NewsBot.Utilities.MessagesUtils;
 import sx.blah.discord.handle.obj.IMessage;
-import sx.blah.discord.util.DiscordException;
-import sx.blah.discord.util.MissingPermissionsException;
-import sx.blah.discord.util.RateLimitException;
 
 /**
  * This class handles the creation of a faction.
@@ -22,11 +19,7 @@ public class AddFactionCommand {
             String[] args = message.getContent().split(" ");
 
             if(args.length > 1){
-                try {
-                    FactionManager.createNewFaction(message.getContent().substring(12), message.getChannel());
-                } catch (RateLimitException | DiscordException | MissingPermissionsException e) {
-                    e.printStackTrace();
-                }
+                FactionManager.createNewFaction(message.getContent().substring(12), message.getChannel());
             } else {
                 MessagesUtils.sendError("Please specify a name!", message.getChannel());
             }

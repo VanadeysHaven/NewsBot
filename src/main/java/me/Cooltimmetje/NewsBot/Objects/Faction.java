@@ -26,7 +26,8 @@ public class Faction {
      *
      * @param name The name of the faction.
      * @param channelId The ID of the channel of the faction.
-     * @param roleId The ID of the role of the faction.
+     * @param roleId The ID of the role of the faction
+     * @param messageId The message ID of the factions message.
      */
     public Faction(String name, String channelId, String roleId, String messageId) {
         this.name = name;

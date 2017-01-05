@@ -28,8 +28,10 @@ public class FactionManager {
      * This creates a new faction and saves it into the database. Also makes the channels and roles and sets the permissions properly.
      *
      * @param name The name of the Faction.
+     * @param channelSent The channel where we should send the confirmation message.
      */
-    public static void createNewFaction(String name, IChannel channelSent) throws RateLimitException, DiscordException, MissingPermissionsException {
+    public static void createNewFaction(String name, IChannel channelSent) {
+        try {
         IGuild guild = Main.getInstance().getNewsBot().getGuildByID(Constants.SERVER_ID);
         IChannel channel = guild.createChannel(name.replace("'", "").replace(" ", "-"));
         RoleBuilder rb = new RoleBuilder(guild).withName(name).withPermissions(EnumSet.of(Permissions.VOICE_CONNECT));
@@ -51,7 +53,10 @@ public class FactionManager {
         faction.save();
 
         Logger.info(MessageFormat.format("[Factions][Created] New faction has been created: {0} (ID: {1}) - Channel ID: {2} | Role ID: {3} | Message ID: {4}", name, id, channel.getID(), role.getID(), message.getID()));
-        MessagesUtils.sendSuccess("Faction **" + name + "** has been added! :tada:" , channelSent);
+        MessagesUtils.sendSuccess("Faction **" + name + "** has been added! :tada:", channelSent);
+        } catch (DiscordException | RateLimitException | MissingPermissionsException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

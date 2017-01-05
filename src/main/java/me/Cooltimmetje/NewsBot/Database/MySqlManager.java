@@ -184,6 +184,7 @@ public class MySqlManager {
      * Used to retrieve the ID of the faction.
      *
      * @param channelId The channel ID of the faction's channel. We use this because it is less error sensitive.
+     * @return The faction ID.
      */
     public static int fetchFactionId(String channelId){
         Connection c = null;
