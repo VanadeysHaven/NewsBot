@@ -2,3 +2,4 @@
 modules
 NewsBot.iml
 target
+/dependency-reduced-pom.xml

@@ -29,6 +29,15 @@ public class CommandManager {
                     AddFactionCommand.run(event.getMessage());
                     break;
             }
+        } else {
+            switch (event.getMessage().getContent().split(" ")[0]){
+                case "!joinfaction":
+                    SetFactionCommand.join(event.getMessage());
+                    break;
+                case "!leavefaction":
+                    SetFactionCommand.leave(event.getMessage());
+                    break;
+            }
         }
     }
 
