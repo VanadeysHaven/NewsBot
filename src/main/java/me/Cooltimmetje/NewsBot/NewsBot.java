@@ -65,7 +65,7 @@ public class NewsBot {
     @EventSubscriber
     public void onReady(ReadyEvent event){
         if(!listenersReady){
-            event.getClient().changeStatus(Status.game("DEVELOPMENT"));
+            event.getClient().changeStatus(Status.game("Collecting news..."));
             newsBot.getDispatcher().registerListener(new CommandManager());
             MySqlManager.loadAdmins();
             MySqlManager.loadFactions();
