@@ -88,4 +88,21 @@ public class FactionManager {
             return null;
         }
     }
+
+    /**
+     * This returns the faction based on channel ID.
+     *
+     * @param channelId The channel ID of the faction we want.
+     * @return The faction instance. - Can return null! Handle properly!
+     */
+    public static Faction getFaction(String channelId){
+        for(int id : factions.keySet()){
+            if(getFaction(id) != null) {
+                if (getFaction(id).getChannelId().equals(channelId)) {
+                    return getFaction(id);
+                }
+            }
+        }
+        return null;
+    }
 }
