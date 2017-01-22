@@ -10,7 +10,7 @@ import sx.blah.discord.handle.impl.events.UserLeaveEvent;
 import java.text.MessageFormat;
 
 /**
- * <Needs to be documented>
+ * Listens for joins and quits.
  *
  * @author Tim (Cooltimmetje)
  * @version v0.1-ALPHA-DEV
@@ -23,6 +23,13 @@ public class JoinQuitListener {
         MessagesUtils.sendPlain(MessageFormat.format(":arrow_right: **{0}#{1}** `ID: {2}` joined the server.",
                 event.getUser().getName(), event.getUser().getDiscriminator(), event.getUser().getID()),
                 Main.getInstance().getNewsBot().getChannelByID(Constants.LOG_CHANNEL));
+
+        MessagesUtils.sendPM(event.getUser(),
+                "Welcome to the Galactic Broadcast Corporation! You just received a private message where you'll be able to join the group you represent. If you are an independent commander then please join the \"Freelancer\" Faction. \n" +
+                "\n" +
+                "If you have an urgent, breaking story please tag @editors and one of our reporters will get to you ASAP.\n" +
+                "\n" +
+                "To join your group use the command: `!joinfaction <id>` in this PM conversation! - The ID's can be found in the <#266287084719964161> channel.");
     }
 
     @EventSubscriber

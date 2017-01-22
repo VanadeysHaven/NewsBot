@@ -15,8 +15,7 @@ import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
  * @version v0.1-ALPHA-DEV
  * @since v0.1-ALPHA-DEV
  */
-public class CommandManager { //92.222.104.72:9989
-
+public class CommandManager {
     @EventSubscriber
     public void onMessage(MessageReceivedEvent event){
         if(!event.getMessage().getChannel().isPrivate()){
