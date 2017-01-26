@@ -101,7 +101,7 @@ public class NewsBot {
     public void onMention(MentionEvent event){
         if(event.getMessage().getContent().split(" ").length > 1) {
             if (event.getMessage().getContent().split(" ")[1].equalsIgnoreCase("logout")) {
-                if (event.getMessage().getAuthor().getID().equals(Constants.TIMMY_ID)) {
+                if (event.getMessage().getAuthor().getID().equals(Constants.TIMMY_ID) || event.getMessage().getAuthor().getID().equals(Constants.JASCH_ID)) {
                     MessagesUtils.sendSuccess("Well, okay then...\n`Shutting down...`", event.getMessage().getChannel());
 
                     terminate();

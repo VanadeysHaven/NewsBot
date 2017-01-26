@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Constants {
 
     public static String TIMMY_ID = "76593288865394688";
+    public static String JASCH_ID = "148376320726794240";
     public static String SERVER_ID = "265641658186596352";
     public static String LOG_CHANNEL = "266510642264014858";
     public static long STARTUP_TIME;

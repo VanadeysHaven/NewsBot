@@ -5,7 +5,6 @@ import me.Cooltimmetje.NewsBot.Objects.Faction;
 import me.Cooltimmetje.NewsBot.Utilities.Constants;
 import me.Cooltimmetje.NewsBot.Utilities.FactionManager;
 import me.Cooltimmetje.NewsBot.Utilities.MessagesUtils;
-import sun.misc.resources.Messages_de;
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IUser;
