@@ -65,12 +65,15 @@ public class NewsBot {
     @EventSubscriber
     public void onReady(ReadyEvent event){
         if(!listenersReady){
+
             event.getClient().changeStatus(Status.game("Collecting news..."));
             newsBot.getDispatcher().registerListener(new CommandManager());
             MySqlManager.loadAdmins();
             MySqlManager.loadFactions();
 
             listenersReady = true;
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> terminate(true)));
+            MessagesUtils.sendPlain(":robot: Startup sequence complete!", Main.getInstance().getNewsBot().getChannelByID(Constants.LOG_CHANNEL));
         }
     }
 
@@ -104,7 +107,7 @@ public class NewsBot {
                 if (event.getMessage().getAuthor().getID().equals(Constants.TIMMY_ID) || event.getMessage().getAuthor().getID().equals(Constants.JASCH_ID)) {
                     MessagesUtils.sendSuccess("Well, okay then...\n`Shutting down...`", event.getMessage().getChannel());
 
-                    terminate();
+                    terminate(false);
                 } else {
                     MessagesUtils.sendError("Ur not timmy >=(", event.getMessage().getChannel());
                 }
@@ -114,8 +117,12 @@ public class NewsBot {
 
     /**
      * Terminate the bot. This will prevent it from reconnecting.
+     * @param sigterm If the terminate was demanded by SIGTERM
      */
-    public void terminate() {
+    public void terminate(boolean sigterm) {
+        if(sigterm){
+            MessagesUtils.sendPlain(":robot: Logging out due to SIGTERM...", Main.getInstance().getNewsBot().getChannelByID(Constants.LOG_CHANNEL));
+        }
         reconnect.set(false);
         try {
             newsBot.logout();

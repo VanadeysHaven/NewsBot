@@ -54,6 +54,7 @@
     </dependencies>
 
     <build>
+        <finalName>NewsBot</finalName>
         <plugins>
             <!-- To create an executable fat JAR when using mvn package -->
             <plugin>
