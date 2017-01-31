@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * This is the instance of the bot.
  *
  * @author Tim (Cooltimmetje)
- * @version v0.1-ALPHA-DEV
+ * @version v0.1-ALPHA
  * @since v0.1-ALPHA-DEV
  */
 public class NewsBot {
@@ -83,16 +83,16 @@ public class NewsBot {
      * @param event The event that triggers this bit of code.
      */
     public void onDisconnect(DisconnectedEvent event){
-        CompletableFuture.runAsync(() -> {
-            if(reconnect.get()){
-                Logger.info("Attempting to reconnect bot.");
-                try {
-                    login();
-                } catch (DiscordException e){
-                    Logger.warn("Well rip.", e);
-                }
-            }
-        });
+//        CompletableFuture.runAsync(() -> {
+//            if(reconnect.get()){
+//                Logger.info("Attempting to reconnect bot.");
+//                try {
+//                    login();
+//                } catch (DiscordException e){
+//                    Logger.warn("Well rip.", e);
+//                }
+//            }
+//        });
     }
 
     /**
