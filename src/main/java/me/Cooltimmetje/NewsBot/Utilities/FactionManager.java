@@ -17,7 +17,7 @@ import java.util.HashMap;
  * Manages factions.
  *
  * @author Tim (Cooltimmetje)
- * @version v0.1-ALPHA-DEV
+ * @version v0.1-ALPHA
  * @since v0.1-ALPHA-DEV
  */
 public class FactionManager {
@@ -28,9 +28,9 @@ public class FactionManager {
      * This creates a new faction and saves it into the database. Also makes the channels and roles and sets the permissions properly.
      *
      * @param name The name of the Faction.
-     * @param channelSent The channel where we should send the confirmation message.
+     * @param messageSent This is the message that triggered this bit of code.
      */
-    public static void createNewFaction(String name, IChannel channelSent) {
+    public static void createNewFaction(String name, IMessage messageSent) {
         try {
         IGuild guild = Main.getInstance().getNewsBot().getGuildByID(Constants.SERVER_ID);
         IChannel channel = guild.createChannel(name.replace("'", "").replace(" ", "-"));
@@ -53,8 +53,17 @@ public class FactionManager {
         faction.save();
 
         Logger.info(MessageFormat.format("[Factions][Created] New faction has been created: {0} (ID: {1}) - Channel ID: {2} | Role ID: {3} | Message ID: {4}", name, id, channel.getID(), role.getID(), message.getID()));
-        MessagesUtils.sendSuccess("Faction **" + name + "** has been added! :tada:", channelSent);
+        MessagesUtils.sendPlain(MessageFormat.format(":new: Admin **{0}** added faction **{1}**!",
+                messageSent.getAuthor().getName() + "#" + messageSent.getAuthor().getDiscriminator(), faction.getName()),
+                Main.getInstance().getNewsBot().getChannelByID(Constants.LOG_CHANNEL));
+
         } catch (DiscordException | RateLimitException | MissingPermissionsException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            messageSent.addReaction("✅");
+        } catch (MissingPermissionsException | RateLimitException | DiscordException e) {
             e.printStackTrace();
         }
     }

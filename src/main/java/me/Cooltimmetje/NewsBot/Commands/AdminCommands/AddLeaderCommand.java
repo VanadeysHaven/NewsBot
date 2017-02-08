@@ -39,7 +39,7 @@ public class AddLeaderCommand {
                                     (target.getNicknameForGuild(channel.getGuild()).isPresent() ? target.getNicknameForGuild(channel.getGuild()).get() : target.getName()), faction.getName()), message.getChannel());
 
                             MessagesUtils.sendPlain(MessageFormat.format(":tophat: Admin **{0}** has added **{1}** `ID: {2}` as a leader for faction **{3}**!",
-                                    message.getAuthor().getName(), target.getName(), target.getID(), faction.getName()), Main.getInstance().getNewsBot().getChannelByID(Constants.LOG_CHANNEL));
+                                    message.getAuthor().getName() + "#" + message.getAuthor().getDiscriminator(), target.getName(), target.getID(), faction.getName()), Main.getInstance().getNewsBot().getChannelByID(Constants.LOG_CHANNEL));
                         } catch (MissingPermissionsException e) {
                             e.printStackTrace();
                             MessagesUtils.sendError("Hmm... I seem to have no permissions to do that.", channel);

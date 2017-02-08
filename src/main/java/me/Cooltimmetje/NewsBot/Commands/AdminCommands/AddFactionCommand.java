@@ -9,7 +9,7 @@ import sx.blah.discord.handle.obj.IMessage;
  * This class handles the creation of a faction.
  *
  * @author Tim (Cooltimmetje)
- * @version v0.1-ALPHA-DEV
+ * @version v0.1-ALPHA
  * @since v0.1-ALPHA-DEV
  */
 public class AddFactionCommand {
@@ -19,7 +19,7 @@ public class AddFactionCommand {
             String[] args = message.getContent().split(" ");
 
             if(args.length > 1){
-                FactionManager.createNewFaction(message.getContent().substring(12), message.getChannel());
+                FactionManager.createNewFaction(message.getContent().substring(12), message);
             } else {
                 MessagesUtils.sendError("Please specify a name!", message.getChannel());
             }
