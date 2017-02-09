@@ -4,10 +4,7 @@ import me.Cooltimmetje.NewsBot.Database.MySqlManager;
 import me.Cooltimmetje.NewsBot.Main;
 import me.Cooltimmetje.NewsBot.Objects.Faction;
 import sx.blah.discord.handle.obj.*;
-import sx.blah.discord.util.DiscordException;
-import sx.blah.discord.util.MissingPermissionsException;
-import sx.blah.discord.util.RateLimitException;
-import sx.blah.discord.util.RoleBuilder;
+import sx.blah.discord.util.*;
 
 import java.text.MessageFormat;
 import java.util.EnumSet;
@@ -48,7 +45,15 @@ public class FactionManager {
         faction.setId(id);
 
         factions.put(id, faction);
-        IMessage message = MessagesUtils.sendPlain(MessageFormat.format("**{0}** | ID: **{1}**", name, id), channel.getGuild().getChannelByID("266287084719964161"));
+
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.withAuthorName(faction.getName());
+        embedBuilder.appendField("__Faction ID:__ " + String.valueOf(id), "** **",false);
+        embedBuilder.withFooterIcon("http://i.imgur.com/whBocR5.png");
+        embedBuilder.withFooterText("Galactic Broadcasting Corporation | EliteGBC.com");
+
+        IMessage message = channel.getGuild().getChannelByID("266287084719964161").sendMessage("", embedBuilder.build(), false);
+
         faction.setMessageId(message.getID());
         faction.save();
 
