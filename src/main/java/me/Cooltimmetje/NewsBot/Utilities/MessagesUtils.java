@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * This class handles sending messages.
  *
  * @author Tim (Cooltimmetje)
- * @version v0.1-ALPHA-DEV
+ * @version v0.1-ALPHA
  * @since v0.1-ALPHA-DEV
  */
 public class MessagesUtils {
@@ -119,6 +119,14 @@ public class MessagesUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void succesReaction(IMessage message){
+        try {
+            message.addReaction("✅");
+        } catch (MissingPermissionsException | RateLimitException | DiscordException e) {
+            e.printStackTrace();
+        }
     }
 
 }

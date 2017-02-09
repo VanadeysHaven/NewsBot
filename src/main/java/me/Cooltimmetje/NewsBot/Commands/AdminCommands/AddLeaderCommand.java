@@ -20,7 +20,7 @@ import java.util.EnumSet;
  * This class will allow bot admins to add leaders to factions.
  *
  * @author Tim (Cooltimmetje)
- * @version v0.1-ALPHA-DEV
+ * @version v0.1-ALPHA
  * @since v0.1-ALPHA-DEV
  */
 public class AddLeaderCommand {

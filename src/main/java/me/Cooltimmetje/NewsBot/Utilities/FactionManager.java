@@ -61,11 +61,7 @@ public class FactionManager {
             e.printStackTrace();
         }
 
-        try {
-            messageSent.addReaction("✅");
-        } catch (MissingPermissionsException | RateLimitException | DiscordException e) {
-            e.printStackTrace();
-        }
+        MessagesUtils.succesReaction(messageSent);
     }
 
     /**
