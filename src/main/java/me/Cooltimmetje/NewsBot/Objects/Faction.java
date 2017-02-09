@@ -107,6 +107,8 @@ public class Faction {
             String input = message.getContent().split(" ")[2];
             if(!input.equalsIgnoreCase("null")){
                 embedBuilder.withThumbnail(input);
+            } else {
+                embedBuilder.withThumbnail("http://i.imgur.com/wPviXKL.png");
             }
         } else if (message.getContent().toLowerCase().startsWith("!editcolor")){
             String[] args = message.getContent().split(" ");

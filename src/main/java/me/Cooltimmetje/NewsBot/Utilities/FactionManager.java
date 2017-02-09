@@ -49,6 +49,7 @@ public class FactionManager {
         EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.withAuthorName(faction.getName());
         embedBuilder.appendField("__Faction ID:__ " + String.valueOf(id), "** **",false);
+        embedBuilder.withThumbnail("http://i.imgur.com/wPviXKL.png");
         embedBuilder.withFooterIcon("http://i.imgur.com/whBocR5.png");
         embedBuilder.withFooterText("Galactic Broadcasting Corporation | EliteGBC.com");
 
