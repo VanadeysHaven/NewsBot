@@ -17,7 +17,7 @@ import java.text.MessageFormat;
 import java.util.EnumSet;
 
 /**
- * This class will allow bot admins to add leaders to factions.
+ * This class will allow bot admins to add editors to factions.
  *
  * @author Tim (Cooltimmetje)
  * @version v0.1-ALPHA
@@ -35,10 +35,11 @@ public class AddLeaderCommand {
                     if(!channel.getUserOverrides().containsKey(target.getID())){
                         try {
                             channel.overrideUserPermissions(target, EnumSet.of(Permissions.MANAGE_CHANNEL, Permissions.MANAGE_MESSAGES), null);
-                            MessagesUtils.sendSuccess(MessageFormat.format("**{0}** has been added as a leader for faction **{1}**!",
+                            target.addRole(message.getGuild().getRolesByName("Editor").get(0));
+                            MessagesUtils.sendSuccess(MessageFormat.format("**{0}** has been added as a editor for faction **{1}**!",
                                     (target.getNicknameForGuild(channel.getGuild()).isPresent() ? target.getNicknameForGuild(channel.getGuild()).get() : target.getName()), faction.getName()), message.getChannel());
 
-                            MessagesUtils.sendPlain(MessageFormat.format(":tophat: Admin **{0}** has added **{1}** `ID: {2}` as a leader for faction **{3}**!",
+                            MessagesUtils.sendPlain(MessageFormat.format(":tophat: Admin **{0}** has added **{1}** `ID: {2}` as a editor for faction **{3}**!",
                                     message.getAuthor().getName() + "#" + message.getAuthor().getDiscriminator(), target.getName(), target.getID(), faction.getName()), Main.getInstance().getNewsBot().getChannelByID(Constants.LOG_CHANNEL));
                         } catch (MissingPermissionsException e) {
                             e.printStackTrace();
@@ -51,13 +52,13 @@ public class AddLeaderCommand {
                             MessagesUtils.sendError("Discord fucked up! Try again!", channel);
                         }
                     } else {
-                        MessagesUtils.sendError("This person is already a leader of this faction. If you wish to remove them do this through Discord itself.", message.getChannel());
+                        MessagesUtils.sendError("This person is already a editor of this faction. If you wish to remove them do this through Discord itself.", message.getChannel());
                     }
                 } else {
                     MessagesUtils.sendError("This is not a faction channel!", message.getChannel());
                 }
             } else {
-                MessagesUtils.sendError("Please mention a person. - Usage: !addleader <mention>", message.getChannel());
+                MessagesUtils.sendError("Please mention a person. - Usage: !addeditor <mention>", message.getChannel());
             }
         }
     }
