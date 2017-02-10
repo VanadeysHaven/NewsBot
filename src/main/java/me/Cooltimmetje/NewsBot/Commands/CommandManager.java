@@ -26,7 +26,7 @@ public class CommandManager {
                 case "!addfaction":
                     AddFactionCommand.run(event.getMessage());
                     break;
-                case "!addleader":
+                case "!addeditor":
                     AddLeaderCommand.run(event.getMessage());
                     break;
                 case "!ts":
