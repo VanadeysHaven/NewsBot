@@ -37,6 +37,7 @@ public class FactionManager {
         channel.overrideRolePermissions(role, EnumSet.of(Permissions.READ_MESSAGES), null);
         channel.overrideRolePermissions(guild.getEveryoneRole(), null, EnumSet.of(Permissions.READ_MESSAGES));
         channel.overrideRolePermissions(guild.getRolesByName("Moderator").get(0), EnumSet.of(Permissions.READ_MESSAGES), null);
+        channel.overrideRolePermissions(guild.getRolesByName("Administrator").get(0), EnumSet.of(Permissions.READ_MESSAGES), null);
 
         Faction faction = new Faction(name, channel.getID(), role.getID(), "1");
 

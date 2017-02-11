@@ -38,6 +38,9 @@ public class CommandManager {
                 case "!editcolor":
 
                     break;
+                case "!ping":
+                    MessagesUtils.sendSuccess("PONG!", event.getMessage().getChannel());
+                    break;
             }
         } else {
             switch (event.getMessage().getContent().split(" ")[0]){
